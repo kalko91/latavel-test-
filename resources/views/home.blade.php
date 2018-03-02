@@ -31,6 +31,7 @@
                         <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Join to group</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,6 +39,7 @@
                         <tr>
                             <td>{{$iUser->name}}</td>
                             <td>{{$iUser->email}}</td>
+                            <td>{{$iUser->invited_group?'+':'-'}}</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -28,13 +28,17 @@ class GenerateInviteUserIDListener
     {
         $user = $event->user;
         $value = \Cookie::get('invite_token');
+        $telegram_id = \Cookie::get('telegram_id');
         if($value){
             $u = \App\User::where('invite_token', $value)
             ->first();
             if($u){
                 $user->invite_user_id = $u->id;
             }
+            $user->telegram_id = $telegram_id;
+
             \Cookie::queue(\Cookie::forget('invite_token'));
+            \Cookie::queue(\Cookie::forget('telegram_id'));
         }
         
         
