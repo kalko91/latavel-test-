@@ -32,7 +32,6 @@ bot.onText(/\/start (.+)/, (msg, match) => {
 
 bot.on('new_chat_members', (msg,match) => {
     console.log('new_chat_members',msg,match);
-    console.log(`${site}/telegramjoin?telegram_id=${msg.from.id}`);
     request.get(`${site}/telegramjoin?telegram_id=${msg.from.id}`)
 })
 
@@ -41,9 +40,9 @@ bot.on('left_chat_member', (msg) => {
     request.get(`${site}/telegramleft?telegram_id=${msg.from.id}`)
 })
 
-// bot.onText(/.*/, (msg, match) => {
-//     console.log(msg,match);
-// })
+bot.onText(/.*/, (msg, match) => {
+    console.log(msg,match);
+})
 
 // Listen for any kind of message. There are different kinds of
 // messages.
