@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = \Auth::user();
+        $invitedUsers = \App\User::where('invite_user_id', $user->id)->get();
+        return view('home',['user'=>$user,'invitedUsers'=>$invitedUsers]);
     }
 }

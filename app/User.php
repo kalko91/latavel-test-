@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\UserCreatingEvent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'invite_token',
     ];
 
     /**
@@ -25,5 +26,9 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+    ];
+
+    protected $dispatchesEvents = [
+        'creating' => UserCreatingEvent::class
     ];
 }
